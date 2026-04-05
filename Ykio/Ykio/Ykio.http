@@ -1,0 +1,6 @@
+@Ykio_HostAddress = http://localhost:5058
+
+GET {{Ykio_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
