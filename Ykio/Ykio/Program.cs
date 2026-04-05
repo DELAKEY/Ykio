@@ -1,11 +1,12 @@
 ﻿
 using System.Reflection;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+//using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authentication.OAuth;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.IdentityModel.Tokens;
 using System.Reflection;
 using System.Text.Json.Serialization;
+using Ykio.Services;
 
 namespace Ykio
 {
@@ -39,6 +40,19 @@ namespace Ykio
                     c.IncludeXmlComments(xmlPath);
                 }
             });
+
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll", builder =>
+                {
+                    builder.AllowAnyOrigin()
+                           .AllowAnyMethod()
+                           .AllowAnyHeader();
+                });
+            });
+
+            builder.Services.AddHostedService<ParserService>();
+
 
             var app = builder.Build();
 
