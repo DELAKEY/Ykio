@@ -20,9 +20,9 @@ namespace Ykio
 
             builder.Services.AddControllers();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-            //builder.Services.AddOpenApi();
+            builder.Services.AddOpenApi();
 
-            // Äîáàâëåíèå ñåðâèñîâ Swagger
+
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen(c =>
             {
@@ -59,7 +59,7 @@ namespace Ykio
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
-                //app.MapOpenApi();
+                app.MapOpenApi();
             }
 
             app.UseAuthorization();
